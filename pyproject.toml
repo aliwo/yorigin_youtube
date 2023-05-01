@@ -37,7 +37,7 @@ strict = true
 [tool.poetry]
 authors = ["aliwo <aliwo@naver.com>"]
 description = ""
-name = "ddang"
+name = "yorigin"
 readme = "README.md"
 version = "0.1.0"
 
