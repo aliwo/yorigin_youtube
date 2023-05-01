@@ -1,0 +1,60 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.black]
+line-length = 120
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+
+[tool.coverage.run]
+branch = true
+omit = [
+  ".mypy_cache/**/*",
+  ".pytest_cache/**/*",
+  "app/configs/*",
+  "app/main.py",
+  "app/tests/*",
+  "app/tests/**/*"
+]
+source = ["app"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+disallow_subclassing_any = false
+exclude = "fabfile"
+ignore_missing_imports = true
+implicit_reexport = true
+plugins = "pydantic.mypy"
+python_version = "3.11"
+show_error_codes = true
+strict = true
+
+[tool.poetry]
+authors = ["aliwo <aliwo@naver.com>"]
+description = ""
+name = "ddang"
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+fastapi = "^0.95.1"
+gunicorn = "^20.1.0"
+motor = "^3.1.2"
+orjson = "^3.8.10"
+python = "^3.11"
+shapely = "^2.0.1"
+uvicorn = "^0.21.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+coverage = "^7.2.3"
+isort = "^5.12.0"
+mypy = "^1.2.0"
+pytest = "^7.3.1"
+pytest-asyncio = "^0.21.0"
+toml-sort = "^0.23.0"
