@@ -16,6 +16,4 @@ async def get_home_categories_one_by_one(lng: float, lat: float) -> list[Categor
 
 
 async def get_distinct_home_categories(lng: float, lat: float) -> list[CategoryCode]:
-    cnt = await shop_collection._collection.count_documents({})
-    result = await shop_collection.get_distinct_category_codes_by_point_intersects(GeoJsonPoint(coordinates=[lng, lat]))
-    return result
+    return await shop_collection.get_distinct_category_codes_by_point_intersects(GeoJsonPoint(coordinates=[lng, lat]))
