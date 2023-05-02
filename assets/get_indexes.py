@@ -1,12 +1,9 @@
 import asyncio
-import os
 
-from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorCollection
+from motor.motor_asyncio import AsyncIOMotorCollection
 
-DATABASE_NAME = os.environ.get("MONGO_DATABASE", "ddang")
+from app.utils.mongo import db
 
-client = AsyncIOMotorClient()
-db = client[DATABASE_NAME]
 shop_collection = AsyncIOMotorCollection(db, "shops")
 category_area_collection = AsyncIOMotorCollection(db, "category_areas")
 

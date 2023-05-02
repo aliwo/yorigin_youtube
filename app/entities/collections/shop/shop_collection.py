@@ -53,23 +53,6 @@ class ShopCollection:
             )
         ]
 
-    async def get_category_codes_by_facet(self, point: GeoJsonPoint) -> list[CategoryCode]:
-        query = [
-            {"$match": {"delivery_areas": {"$elemMatch": {"poly": {"$geoIntersects": {"$geometry": asdict(point)}}}}}},
-            {
-                "$facet": {
-                    code: [
-                        {"$match": {"category_codes": code}},
-                        {"$limit": 1},
-                        {"$project": {"category_codes": 1, "_id": 0}},
-                    ]
-                    for code in CategoryCode
-                }
-            },
-        ]
-        result = await self._collection.aggregate(query).to_list(length=None)
-        return [CategoryCode(code) for code, query_result in result[0].items() if query_result]
-
     async def insert_one(
         self, name: str, category_codes: list[CategoryCode], delivery_areas: list[ShopDeliveryAreaDoc]
     ) -> ShopDocument:

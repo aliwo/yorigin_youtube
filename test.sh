@@ -21,7 +21,7 @@ poetry run toml-sort pyproject.toml --all --in-place
 echo "OK"
 
 echo "Starting pytest with coverage"
-MONGO_DATABASE="mini_target_test" poetry run coverage run -m pytest --asyncio-mode=auto
+MONGO_DATABASE="yorigin_test" poetry run coverage run -m pytest --asyncio-mode=auto
 poetry run coverage report -m
 poetry run coverage html
 
