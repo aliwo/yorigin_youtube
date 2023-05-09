@@ -3,6 +3,7 @@ import json
 import os
 
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorCollection
+from pymongo.errors import BulkWriteError
 
 DATABASE_NAME = os.environ.get("MONGO_DATABASE", "yorigin")
 
@@ -21,7 +22,12 @@ async def insert_all() -> None:
             continue
         with open(f"assets/shops/{filename}") as f:
             data = json.load(f)
-            await shop_collection.insert_many(data)
+            print(f"start to insert {filename}")
+            try:
+                await shop_collection.insert_many(data)
+            except BulkWriteError:
+                print(f"{filename} failed")
+                continue
             print(f"{filename} inserted")
 
 

@@ -27,10 +27,9 @@
 
         // ****** 서울에 랜덤 100개 폴리곤 ************
         const seoul_bbox = [126.87973, 37.463686, 127.081261, 37.608248];
-        const majesta_bbox = [126.99711, 37.482693, 127.013022, 37.498015];
 
 
-        const randomPolygons = turf.randomPolygon(10000, {bbox: seoul_bbox, max_radial_length: 0.01});
+        const randomPolygons = turf.randomPolygon(10000, {bbox: seoul_bbox, max_radial_length: 0.02});
 
         let geoms = []
 
@@ -40,6 +39,13 @@
         });
 
         console.log(geoms);
+
+        const blob = new Blob([JSON.stringify(geoms)], { type: 'application/json' });
+
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = '_.json';
+        link.click();
 
     </script>
   </body>
