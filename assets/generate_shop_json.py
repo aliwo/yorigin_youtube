@@ -3,12 +3,11 @@ from itertools import combinations
 
 from app.entities.collections.category.category_codes import CategoryCode
 
-
 for polygon_num, codes in enumerate(list(combinations(CategoryCode, 1)) + list(combinations(CategoryCode, 2)), start=1):
     with open(f"random_polygons/{polygon_num}.json") as f:
         polygon_list = json.load(f)
 
-    shop_name = '_'.join(codes)
+    shop_name = "_".join(codes)
     result = []
     for i, polygon in enumerate(polygon_list):
         result.append(
