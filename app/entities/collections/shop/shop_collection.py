@@ -7,7 +7,7 @@ from motor.motor_asyncio import AsyncIOMotorCollection, AsyncIOMotorDatabase
 from app.entities.collections.category.category_codes import CategoryCode
 from app.entities.collections.geo_json import GeoJsonPoint
 from app.entities.collections.shop.shop_document import (
-    ShopDeliveryAreaDoc,
+    ShopDeliveryAreaDocument,
     ShopDocument,
 )
 from app.utils.mongo import db
@@ -54,7 +54,7 @@ class ShopCollection:
         ]
 
     async def insert_one(
-        self, name: str, category_codes: list[CategoryCode], delivery_areas: list[ShopDeliveryAreaDoc]
+        self, name: str, category_codes: list[CategoryCode], delivery_areas: list[ShopDeliveryAreaDocument]
     ) -> ShopDocument:
         result = await self._collection.insert_one(
             {
@@ -71,7 +71,7 @@ class ShopCollection:
         )
 
     def _parse(self, result: dict[Any, Any]) -> ShopDocument:
-        delivery_areas = [ShopDeliveryAreaDoc(**delivery_area) for delivery_area in result.pop("delivery_areas")]
+        delivery_areas = [ShopDeliveryAreaDocument(**delivery_area) for delivery_area in result.pop("delivery_areas")]
         return ShopDocument(
             delivery_areas=delivery_areas,
             **result,

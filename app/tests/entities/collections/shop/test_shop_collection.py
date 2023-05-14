@@ -3,7 +3,7 @@ import asyncio
 from app.entities.collections.category.category_codes import CategoryCode
 from app.entities.collections.geo_json import GeoJsonPoint, GeoJsonPolygon
 from app.entities.collections.shop.shop_collection import shop_collection
-from app.entities.collections.shop.shop_document import ShopDeliveryAreaDoc
+from app.entities.collections.shop.shop_document import ShopDeliveryAreaDocument
 
 
 async def test_shop_point_intersects() -> None:
@@ -13,7 +13,7 @@ async def test_shop_point_intersects() -> None:
             "치킨집",
             [CategoryCode.CHICKEN],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]),
                 )
             ],
@@ -22,7 +22,7 @@ async def test_shop_point_intersects() -> None:
             "피자집",
             [CategoryCode.PIZZA],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]]),
                 )
             ],
@@ -44,10 +44,10 @@ async def test_shop_point_intersects_when_it_has_multiple_delivery_area() -> Non
             "치킨집",
             [CategoryCode.CHICKEN],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]),
                 ),
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]),
                 ),
             ],
@@ -56,7 +56,7 @@ async def test_shop_point_intersects_when_it_has_multiple_delivery_area() -> Non
             "피자집",
             [CategoryCode.PIZZA],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]]),
                 ),
             ],
@@ -78,10 +78,10 @@ async def test_shop_exists_by_category_and_point_intersects_when_it_has_multiple
             "치킨집",
             [CategoryCode.CHICKEN],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]),
                 ),
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]),
                 ),
             ],
@@ -90,7 +90,7 @@ async def test_shop_exists_by_category_and_point_intersects_when_it_has_multiple
             "피자집",
             [CategoryCode.PIZZA],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]]),
                 ),
             ],
@@ -117,10 +117,10 @@ async def test_shop_get_distinct_category_codes_by_point_intersects() -> None:
             "치킨집",
             [CategoryCode.CHICKEN],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]),
                 ),
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]),
                 ),
             ],
@@ -129,10 +129,10 @@ async def test_shop_get_distinct_category_codes_by_point_intersects() -> None:
             "치킨집2",
             [CategoryCode.CHICKEN],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 9], [9, 9], [9, 0], [0, 0]]]),
                 ),
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]]),
                 ),
             ],
@@ -141,7 +141,7 @@ async def test_shop_get_distinct_category_codes_by_point_intersects() -> None:
             "피자집",
             [CategoryCode.PIZZA],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]]),
                 ),
             ],
@@ -150,7 +150,7 @@ async def test_shop_get_distinct_category_codes_by_point_intersects() -> None:
             "버거집",
             [CategoryCode.BURGER],
             [
-                ShopDeliveryAreaDoc(
+                ShopDeliveryAreaDocument(
                     poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 9], [9, 9], [9, 0], [0, 0]]]),
                 ),
             ],

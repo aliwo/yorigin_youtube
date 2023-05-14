@@ -6,7 +6,7 @@ from app.entities.collections.geo_json import GeoJsonPolygon
 
 
 @dataclasses.dataclass
-class ShopDeliveryAreaDoc:
+class ShopDeliveryAreaDocument:
     poly: GeoJsonPolygon
 
 
@@ -14,4 +14,4 @@ class ShopDeliveryAreaDoc:
 class ShopDocument(BaseDocument):
     name: str
     category_codes: list[CategoryCode]
-    delivery_areas: list[ShopDeliveryAreaDoc]
+    delivery_areas: list[ShopDeliveryAreaDocument]

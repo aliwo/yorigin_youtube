@@ -2,7 +2,7 @@ from app.entities.collections.category.category_codes import CategoryCode
 from app.entities.collections.category.category_collection import category_collection
 from app.entities.collections.geo_json import GeoJsonPolygon
 from app.entities.collections.shop.shop_collection import shop_collection
-from app.entities.collections.shop.shop_document import ShopDeliveryAreaDoc
+from app.entities.collections.shop.shop_document import ShopDeliveryAreaDocument
 from app.services.category_service import get_home_categories_one_by_one
 
 
@@ -15,7 +15,7 @@ async def test_one_by_one() -> None:
     await shop_collection.insert_one(
         "치킨집",
         [CategoryCode.CHICKEN],
-        [ShopDeliveryAreaDoc(poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]))],
+        [ShopDeliveryAreaDocument(poly=GeoJsonPolygon(coordinates=[[[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]]))],
     )
 
     # when
