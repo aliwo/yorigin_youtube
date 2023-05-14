@@ -3,7 +3,7 @@ name: Benchmark one by one
 on: [push]
 
 jobs:
-  benchmark:
+  benchmark_one_by_one:
     runs-on: ubuntu-22.04
     services:
       mongodb:

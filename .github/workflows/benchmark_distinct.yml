@@ -3,7 +3,7 @@ name: Benchmark distinct
 on: [push]
 
 jobs:
-  benchmark:
+  benchmark_distinct:
     runs-on: ubuntu-22.04
     services:
       mongodb:
